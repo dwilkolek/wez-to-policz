@@ -1,0 +1,15 @@
+<header>
+    <h2>Geometria stropu</h2>
+</header>
+<form>
+    <label>
+        Rozpiętość płyty:
+    </label>
+    <input type="text" [(ngModel)]="model.rozpPlyty" name="rozpPlyty"/><br />
+        <label>
+        Rozpiętość żebra:
+    </label>
+    <input type="text"  [(ngModel)]="model.rozpZebra" name="rozpZebra"/><br />
+</form>
+
+{{model.hp_min()}}
