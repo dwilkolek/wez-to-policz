@@ -10,8 +10,8 @@ import { AboutComponent } from './about/about.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes: Routes = [
-  { path: 'o-nas', component: AboutComponent },
+export const appRoutes: Routes = [
+  { path: '', component: AboutComponent },
   { path: 'beton', component: BetonComponent }
 ]
 
