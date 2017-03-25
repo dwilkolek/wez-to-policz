@@ -12,12 +12,10 @@ export class BetonModelObliczen {
   gatunekS: string;
   c_min_dur: number;
   c_min_b: number;
-  c_dev: number;
-  c_nom: number;
+  c_dev: number = 10;
   hp: number;
   hz: number;
   bz: number;
-  dp: number;
   fiG: number;
   fiM: number;
  hp_min(){
@@ -38,5 +36,13 @@ export class BetonModelObliczen {
  bz_max(){
    return 1/2 * this.hz;
  }
- 
+ c_min(){
+   return Math.max(this.c_min_b, this.c_min_dur, 10);
+ }
+ c_nom(){
+   return this.c_min() + this.c_dev;
+ }
+dp(){
+  return this.hp * 100 - (this.c_nom() * 0.1 + 0.1 * this.fiG/2);
+}
 }
