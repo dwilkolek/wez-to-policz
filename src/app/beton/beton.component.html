@@ -12,4 +12,4 @@
     <input type="text"  [(ngModel)]="model.rozpZebra" name="rozpZebra"/><br />
 </form>
 
-{{model.hp_min()}}
+{{model.hp_min() | formatNumber:3 }}

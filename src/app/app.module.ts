@@ -21,15 +21,15 @@ export const appRoutes: Routes = [
   declarations: [
     AppComponent,
     BetonComponent,
-    AboutComponent
+    AboutComponent,
+    NumberFormatPipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     BrowserModule,
     FormsModule,
-    HttpModule,
-    NumberFormatPipe
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
