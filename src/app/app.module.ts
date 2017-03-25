@@ -2,26 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { BetonComponent } from './beton/beton.component';
+import { AboutComponent } from './about/about.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { JulkaTestComponent } from './julka-test/julka-test.component';
 
 const appRoutes: Routes = [
-  { path: 'beton', component: BetonComponent },
-  { path: 'julka', component: JulkaTestComponent },
+  { path: 'o-nas', component: AboutComponent },
+  { path: 'beton', component: BetonComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     BetonComponent,
-    JulkaTestComponent
+    AboutComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
+    MaterialModule,
     BrowserModule,
     FormsModule,
     HttpModule
