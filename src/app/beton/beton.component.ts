@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KlasaBetonu } from './klasa-betonu';
+import { GatunekStali } from './gatunek-stali';
 import { BetonModelObliczen } from './model';
 
 @Component({
@@ -20,5 +21,7 @@ export class BetonComponent implements OnInit {
     //   console.log(key, '->',el.text);
     // })
   }
-
+obliczGeometrieStropu() {
+  this.model.hp_min();
+}
 }
