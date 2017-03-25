@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KlasaBetonu } from './klasa-betonu';
+import { BetonModelObliczen } from './model';
 
 @Component({
   selector: 'app-beton',
@@ -7,12 +8,9 @@ import { KlasaBetonu } from './klasa-betonu';
   styleUrls: ['./beton.component.css']
 })
 export class BetonComponent implements OnInit {
-  rozpPlyty: number;
-  rozpZebra: number;
-  paramBet: number = 1.4;
-  paramStal: number = 1.15;
-  klasaB: string;
-  klasaS: string;
+ 
+  model:BetonModelObliczen = new BetonModelObliczen();
+
   ngOnInit() {
     // var x = KlasaBetonu.KLASY_BETONU.C16_20;
     // var z = KlasaBetonu.KLASY_BETONU_PARAMETRY.get(x);
