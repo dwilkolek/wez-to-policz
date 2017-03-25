@@ -31,11 +31,8 @@
     <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/o-nas">O nas <span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/beton">Beton <span class="sr-only"></span></a>
+                <li class="nav-item" *ngFor="let item of menu">
+                    <a class="nav-link" [class.active]="isActive(item)" [href]="item.link">{{item.name}} <span class="sr-only"></span></a>
                 </li>
             </ul>
 
