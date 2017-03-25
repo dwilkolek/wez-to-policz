@@ -8,15 +8,18 @@ import { AppComponent } from './app.component';
 import { BetonComponent } from './beton/beton.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { JulkaTestComponent } from './julka-test/julka-test.component';
 
 const appRoutes: Routes = [
   { path: 'beton', component: BetonComponent },
+  { path: 'julka', component: JulkaTestComponent },
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    BetonComponent
+    BetonComponent,
+    JulkaTestComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

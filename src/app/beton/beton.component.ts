@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KlasaBetonu } from './klasa-betonu';
 
 @Component({
   selector: 'app-beton',
@@ -6,36 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./beton.component.css']
 })
 export class BetonComponent implements OnInit {
-  private model= {
-    name: 'Julka',
-    alterEgo: 'Vynn Trixx',
-    random: 0
-  }
-  
-  mix: string;
-
-  public itemList = [
-      {name:"Apple"},
-      {name:"Orange"},
-      {name:"Grapes"},
-   ];
-
-  constructor() { }
-
+  rozpPlyty: number;
+  rozpZebra: number;
+  paramBet: number = 1.4;
+  paramStal: number = 1.15;
+  klasaB: string;
+  klasaS: string;
   ngOnInit() {
-    this.generujMix();
-
-    setInterval(() => {
-      this.model.random = Math.round(Math.random() * 100);
-      this.generujMix();
-    }, 1000)
-
-  }
-
-   generujMix(e?){
-    console.log("generujMix", e)
-
-    this.mix = "NUM: "+this.model.random + "Name:" + this.model.name + " | AlterEgo: "+this.model.alterEgo;
+    // var x = KlasaBetonu.KLASY_BETONU.C16_20;
+    // var z = KlasaBetonu.KLASY_BETONU_PARAMETRY.get(x);
+    // console.log(x, z);
+    // console.log('------')
+    // KlasaBetonu.KLASY_BETONU_PARAMETRY.forEach((el, key) => {
+    //   console.log(key, '->',el.text);
+    // })
   }
 
 }
