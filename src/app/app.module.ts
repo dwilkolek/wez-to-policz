@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import {NumberFormatPipe} from '../pipes/number-format-pipe'
+
 export const appRoutes: Routes = [
   { path: '', component: AboutComponent },
   { path: 'beton', component: BetonComponent }
@@ -26,7 +28,8 @@ export const appRoutes: Routes = [
     MaterialModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NumberFormatPipe
   ],
   providers: [],
   bootstrap: [AppComponent]
