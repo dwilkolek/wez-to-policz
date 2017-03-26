@@ -17,6 +17,9 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   hz_max_value: number;
   hp_value: number;
   hz_value: number;
+  bz_min_value: number;
+  bz_max_value: number;
+  bz_value: number;
 
   @Output() onHpMin: EventEmitter<number> = new EventEmitter<number>();
   @Output() onHpMax: EventEmitter<number> = new EventEmitter<number>();
@@ -24,6 +27,9 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   @Output() onHzMax: EventEmitter<number> = new EventEmitter<number>();
   @Output() onHp: EventEmitter<number> = new EventEmitter<number>();
   @Output() onHz: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onBzMin: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onBzMax: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onBz: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -52,6 +58,16 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
     this.hp_min_obl();
   }
 
+  private bz_min_obl() {
+    this.bz_min_value = 1 / 2.5 * this.hz_value;
+    this.onBzMin.emit(this.bz_min_value);
+  }
+  private bz_max_obl() {
+    this.bz_max_value = 1 / 2 * this.hz_value;
+    this.onBzMax.emit(this.bz_max_value);
+  }
+
+
   private hp_min_obl() {
     this.hp_min_value = 1 / 35 * this.rozpZebra;
     this.onHpMin.emit(this.hp_min_value);
@@ -70,11 +86,17 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   }
 
   hzChange() {
-    this.onHz.emit(this.hz_value);
+    this.onHz.emit(this.hz_value);    
+    this.bz_max_obl();
+    this.bz_min_obl();
   }
 
   hpChange() {
     this.onHp.emit(this.hp_value);
+  }
+
+  bzChange() {
+    this.onBz.emit(this.bz_value);
   }
 
 }
