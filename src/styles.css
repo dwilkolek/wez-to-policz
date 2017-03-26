@@ -80,3 +80,10 @@ h1 {
 .half-width {
     width: 50%;
 }
+
+input.mat-input-element[readonly] {
+    color: #888;
+}
+input.mat-input-element[readonly]:focus {
+    color: #444;
+}
