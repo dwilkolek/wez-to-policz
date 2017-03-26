@@ -2,27 +2,27 @@
   <h2>Geometria stropu</h2>
 </header>
 <form>
-  <md-input-container class="example-full-width">
+  <md-input-container class="full-width">
     <input mdInput placeholder="Minimalna wysokość żebra [m]:" value="{{hz_min_value | formatNumber}}" readonly />
   </md-input-container><br />
-  <md-input-container class="example-full-width">
+  <md-input-container class="full-width">
     <input mdInput placeholder="Maksymalna wysokość żebra [m]:" value="{{hz_max_value | formatNumber}}" readonly />
   </md-input-container><br />
-  <md-input-container class="example-full-width">
+  <md-input-container class="full-width">
     <input mdInput placeholder="Dobrana wysokość żebra [m]:" [(ngModel)]="hz_value" name="hz_value" (keyup)="hzChange()">
   </md-input-container>
   
 
   <br />
-  <md-input-container class="example-full-width">
+  <md-input-container class="full-width">
     <input mdInput placeholder="Minimalna wysokość płyty [m]:" value="{{hp_min_value | formatNumber}}" readonly />
   </md-input-container>
   <br />
-  <md-input-container class="example-full-width">
+  <md-input-container class="full-width">
     <input mdInput placeholder="Maksymalna wysokość płyty [m]:" value="{{hp_max_value | formatNumber}}" readonly />
   </md-input-container>
   <br />
-  <md-input-container class="example-full-width">
+  <md-input-container class="full-width">
     <input mdInput placeholder=" Dobrana wysokość płyty [m]:" [(ngModel)]="hp_value" name="hp_value" (keyup)="hpChange()" />
   </md-input-container>
   <br />

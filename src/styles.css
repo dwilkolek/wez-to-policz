@@ -72,3 +72,11 @@ h1 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
