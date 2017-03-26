@@ -1,13 +1,33 @@
 <header>
   <h3>Dane wstępne</h3>
 </header>
+<br />
+Klasa betonu
+<select required name="klasaBetonu">
+  <option value="C12/15">C12/15</option>
+  <option value="C16/20">C16/20</option>
+  <option value="C20/25">C20/25</option>
+  <option value="C25/30">C25/30</option>
+  <option value="C30/37">C30/37</option>
+  <option value="C35/45">C25/30</option>
+  <option value="C40/50">C40/50</option>
+  <option value="C45/55">C45/55</option>
+  <option value="C50/60">C50/60</option>
+</select>
+
+Gatunek stali
+<select required name="gatunekStali">
+  <option value="RB400">RB400</option>
+  <option value="RB500">RB500</option>
+</select>
+<br /><br />
+
 <form>
   <md-input-container class="full-width">
-    <input mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()"/>
+    <input mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()" />
   </md-input-container>
   <br />
-    <md-input-container class="full-width">
-    <input mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()"/>
+  <md-input-container class="full-width">
+    <input mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()" />
   </md-input-container>
 </form>
- 

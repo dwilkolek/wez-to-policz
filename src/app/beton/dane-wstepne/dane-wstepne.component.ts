@@ -10,13 +10,25 @@ export class DaneWstepneComponent implements OnInit {
 
   @Input() rozpPlyty: number;
   @Input() rozpZebra: number;
+  @Input() klasaB: string;
+  @Input() gatunekS: string;
 
   @Output() onRozpPlyty: EventEmitter<number> = new EventEmitter<number>();
   @Output() onRozpZebra: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onKlasaB: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onGatunekS: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitKlasyB() {
+    this.onKlasaB.emit(this.klasaB);
+  }
+
+  emitGatunkuS() {
+    this.onGatunekS.emit(this.gatunekS);
   }
 
   emitPlyty() {
