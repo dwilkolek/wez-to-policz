@@ -27,12 +27,4 @@ export class BetonComponent implements OnInit {
     this.model[pole] = value;
   }
 
-  get rozpPlyty() {
-    return this.model.rozpPlyty;
-  }
-
-  get rozpZebra() {
-    return this.model.rozpZebra;
-  }
-
 }
