@@ -10,7 +10,8 @@ import { AboutComponent } from './about/about.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import {NumberFormatPipe} from '../pipes/number-format-pipe'
+import {NumberFormatPipe} from '../pipes/number-format-pipe';
+import { DaneWstepneComponent } from './beton/dane-wstepne/dane-wstepne.component'
 
 export const appRoutes: Routes = [
   { path: '', component: AboutComponent },
@@ -22,7 +23,8 @@ export const appRoutes: Routes = [
     AppComponent,
     BetonComponent,
     AboutComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    DaneWstepneComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
