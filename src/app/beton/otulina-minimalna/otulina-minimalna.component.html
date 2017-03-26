@@ -1,22 +1,32 @@
 <header>
-    <h2>Zbrojenie minimalne</h2>
+    <h2>Otulina minimalna</h2>
 </header>
 <form>
-    <label> Zakładana średnica prętów zbrojenia głównego [mm]: </label>
-    <input type="text" [(ngModel)]="model.fiG" name="fiG" /><br />
+    <md-input-container class="example-full-width">
+        <input mdInput placeholder="Minimalna otulina ze względu na rozmiar kruszywa [mm]:" [(ngModel)]="c_min_b" name="c_min_b"
+            (keyup)="policz()" />
+    </md-input-container>
+    <br />
+    <md-input-container class="example-full-width">
+        <input mdInput placeholder="Minimalna otulina ze względu na trwałość stali [mm]:" [(ngModel)]="c_min_dur" name="c_min_dur"
+            (keyup)="policz()" />
+    </md-input-container>
+    <br />
+    <md-input-container class="example-full-width">
+        <input mdInput placeholder="Zakładana średnica prętów zbrojenia głównego [mm]:" [(ngModel)]="fiG" name="fiG" (keyup)="policz()"
+        />
+    </md-input-container>
+    <br />
+    <md-input-container class="example-full-width">
+        <input mdInput placeholder="Otulina minimalna [mm]:" value="{{c_min() | formatNumber:5 }}" readonly />
+    </md-input-container>
+    <br />
+    <md-input-container class="example-full-width">
+        <input mdInput placeholder="Otulina nominalna [mm]:" value="{{c_nom() | formatNumber:5 }}" readonly />
+    </md-input-container>
+    <br />
+    <md-input-container class="example-full-width">
+        <input mdInput placeholder="Wysokość użytkowa płyty [cm]:" value="{{dp() | formatNumber:5 }}" readonly />
+    </md-input-container>
 
-    <label> Minimalne zbrojenie ze względu na rozmiar kruszywa [mm]: </label>
-    <input type="text" [(ngModel)]="model.c_min_b" name="c_min_b" /><br />
-
-    <label> Minimalne zbrojenie ze względu na trwałość stali [mm]:</label>
-    <input type="text" [(ngModel)]="model.c_min_dur" name="c_min_dur" /><br />
 </form>
-<p>Zbrojeie minimalne [mm]:</p>
-{{model.c_min() | formatNumber:5}}
-<br />
-<p>Zbrojenie nominalne [mm]:</p>
-{{model.c_nom() | formatNumber:5}}
-<br />
-<p>Wysokość użytkowa płyty [cm]:</p>
-{{model.dp() | formatNumber:5}}
-<br />

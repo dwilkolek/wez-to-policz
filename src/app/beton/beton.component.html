@@ -3,7 +3,7 @@
  (onRozpZebra)="przypiszDoModelu('rozpZebra', $event)"
 >
 </app-dane-wstepne>
-<app-geometria-stropu [rozpPlyty]="model.rozpPlyty" [rozpZebra]="model.rozpZebra" (onHz)="przypiszDoModelu('hp',$event)" (onHp)="przypiszDoModelu('hz',$event)"
+<app-geometria-stropu [rozpPlyty]="model.rozpPlyty" [rozpZebra]="model.rozpZebra" (onHz)="przypiszDoModelu('hz',$event)" (onHp)="przypiszDoModelu('hp',$event)"
     (onHzMin)="przypiszDoModelu('hz_min',$event)" (onHzMax)="przypiszDoModelu('hz_max',$event)" (onHpMin)="przypiszDoModelu('hp_min',$event)"
     (onHpMax)="przypiszDoModelu('hp_max',$event)"></app-geometria-stropu>
-<app-otulina-minimalna [model]="model"></app-otulina-minimalna>
+<app-otulina-minimalna [hp]="model.hp" [c_dev]="model.c_dev" (onCMin)="przypiszDoModelu('c_min',$event)" (onCNom)="przypiszDoModelu('c_nom',$event)" (onDp)="przypiszDoModelu('dp',$event)"></app-otulina-minimalna>

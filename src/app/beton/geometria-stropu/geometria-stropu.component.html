@@ -4,10 +4,10 @@
 <form>
   <md-input-container class="example-full-width">
     <input mdInput placeholder="Minimalna wysokość żebra [m]:" value="{{hz_min_value | formatNumber}}" readonly />
-  </md-input-container>
+  </md-input-container><br />
   <md-input-container class="example-full-width">
     <input mdInput placeholder="Maksymalna wysokość żebra [m]:" value="{{hz_max_value | formatNumber}}" readonly />
-  </md-input-container>
+  </md-input-container><br />
   <md-input-container class="example-full-width">
     <input mdInput placeholder="Dobrana wysokość żebra [m]:" [(ngModel)]="hz_value" name="hz_value" (keyup)="hzChange()">
   </md-input-container>
@@ -19,7 +19,7 @@
   </md-input-container>
   <br />
   <md-input-container class="example-full-width">
-    <input mdInput placeholder="Maksymalna wysokość płyty [m]:" value="{{hp_min_value | formatNumber}}" readonly />
+    <input mdInput placeholder="Maksymalna wysokość płyty [m]:" value="{{hp_max_value | formatNumber}}" readonly />
   </md-input-container>
   <br />
   <md-input-container class="example-full-width">

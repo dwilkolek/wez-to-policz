@@ -22,6 +22,7 @@ export class BetonModelObliczen {
   hz_max: number;
   hp_min: number;
   hp_max: number;
+  c_min: number;
   
   bz_min() {
     return 1 / 2.5 * this.hz;
@@ -29,13 +30,5 @@ export class BetonModelObliczen {
   bz_max() {
     return 1 / 2 * this.hz;
   }
-  c_min() {
-    return Math.max(this.c_min_b, this.c_min_dur, 10);
-  }
-  c_nom() {
-    return this.c_min() + this.c_dev;
-  }
-  dp() {
-    return this.hp * 100 - (this.c_nom() * 0.1 + 0.1 * this.fiG / 2);
-  }
+ 
 }
