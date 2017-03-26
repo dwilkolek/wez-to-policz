@@ -18,31 +18,24 @@ export class BetonModelObliczen {
   bz: number;
   fiG: number;
   fiM: number;
- hp_min(){
-   return 1/35 * this.rozpZebra;
- }
- hp_max(){
-   return 1/25 * this.rozpZebra;
- }
- hz_min(){
-   return 1/18 * this.rozpPlyty;
- }
- hz_max(){
-   return 1/15 * this.rozpPlyty;
- }
- bz_min(){
-   return 1/2.5 * this.hz;
- }
- bz_max(){
-   return 1/2 * this.hz;
- }
- c_min(){
-   return Math.max(this.c_min_b, this.c_min_dur, 10);
- }
- c_nom(){
-   return this.c_min() + this.c_dev;
- }
-dp(){
-  return this.hp * 100 - (this.c_nom() * 0.1 + 0.1 * this.fiG/2);
-}
+  hz_min: number;
+  hz_max: number;
+  hp_min: number;
+  hp_max: number;
+  
+  bz_min() {
+    return 1 / 2.5 * this.hz;
+  }
+  bz_max() {
+    return 1 / 2 * this.hz;
+  }
+  c_min() {
+    return Math.max(this.c_min_b, this.c_min_dur, 10);
+  }
+  c_nom() {
+    return this.c_min() + this.c_dev;
+  }
+  dp() {
+    return this.hp * 100 - (this.c_nom() * 0.1 + 0.1 * this.fiG / 2);
+  }
 }

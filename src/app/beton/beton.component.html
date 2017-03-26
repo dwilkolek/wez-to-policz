@@ -1,52 +1,9 @@
-<header>
-    <h2>Geometria stropu</h2>
-</header>
-<form>
-    <label>
-        Rozpiętość płyty [m]:
-    </label>
-    <input type="text" [(ngModel)]="model.rozpPlyty" name="rozpPlyty" /><br />
-    <label>
-        Rozpiętość żebra [m]:
-    </label>
-    <input type="text" [(ngModel)]="model.rozpZebra" name="rozpZebra" /><br />
-</form>
-
-<p>Minimalna wysokość płyty [m]:</p>
-{{model.hp_min() | formatNumber}}
-<br />
-<p>Maksymalna wysokość płyty [m]:</p>
-{{model.hp_max() | formatNumber}}
-
-<form>
-    <label>
-        Dobrana wysokość płyty [m]:
-    </label>
-    <input type="text" [(ngModel)]="model.hp" name="hp" />
-
-    <header>
-        <h2>Zbrojenie minimalne</h2>
-    </header>
-    <form>
-        <label>
-        Zakładana średnica prętów zbrojenia głównego [mm]:
-    </label>
-        <input type="text" [(ngModel)]="model.fiG" name="fiG" /><br />
-        <label>
-        Minimalne zbrojenie ze względu na rozmiar kruszywa [mm]:
-    </label>
-        <input type="text" [(ngModel)]="model.c_min_b" name="c_min_b" /><br />
-        <label>
-        Minimalne zbrojenie ze względu na trwałość stali [mm]:
-    </label>
-        <input type="text" [(ngModel)]="model.c_min_dur" name="c_min_dur" /><br />
-    </form>
-    <p>Zbrojeie minimalne [mm]:</p>
-    {{model.c_min() | formatNumber:5}}
-    <br />
-    <p>Zbrojenie nominalne [mm]:</p>
-    {{model.c_nom() | formatNumber:5}}
-    <br />
-    <p>Wysokość użytkowa płyty [cm]:</p>
-    {{model.dp() | formatNumber:5}}
-    <br />
+<app-dane-wstepne
+ (onRozpPlyty)="przypiszDoModelu('rozpPlyty', $event)"
+ (onRozpZebra)="przypiszDoModelu('rozpZebra', $event)"
+>
+</app-dane-wstepne>
+<app-geometria-stropu [rozpPlyty]="rozpPlyty" [rozpZebra]="rozpZebra" (onHz)="przypiszDoModelu('hp',$event)" (onHp)="przypiszDoModelu('hz',$event)"
+    (onHzMin)="przypiszDoModelu('hz_min',$event)" (onHzMax)="przypiszDoModelu('hz_max',$event)" (onHpMin)="przypiszDoModelu('hp_min',$event)"
+    (onHpMax)="przypiszDoModelu('hp_max',$event)"></app-geometria-stropu>
+<app-otulina-minimalna [model]="model"></app-otulina-minimalna>

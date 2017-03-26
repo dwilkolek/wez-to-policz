@@ -21,7 +21,18 @@ export class BetonComponent implements OnInit {
     //   console.log(key, '->',el.text);
     // })
   }
-obliczGeometrieStropu() {
-  this.model.hp_min();
-}
+
+  przypiszDoModelu(pole: string, value:any) {
+    console.log('przypisuje do modelu', pole, value);
+    this.model[pole] = value;
+  }
+
+  get rozpPlyty() {
+    return this.model.rozpPlyty;
+  }
+
+  get rozpZebra() {
+    return this.model.rozpZebra;
+  }
+
 }
