@@ -2,30 +2,30 @@
     <h3>Otulina minimalna</h3>
 </header>
 <form>
-    <md-input-container class="example-full-width">
+    <md-input-container class="full-width">
         <input mdInput placeholder="Minimalna otulina ze względu na rozmiar kruszywa [mm]:" [(ngModel)]="c_min_b" name="c_min_b"
             (keyup)="policz()" />
     </md-input-container>
     <br />
-    <md-input-container class="example-full-width">
+    <md-input-container class="full-width">
         <input mdInput placeholder="Minimalna otulina ze względu na trwałość stali [mm]:" [(ngModel)]="c_min_dur" name="c_min_dur"
             (keyup)="policz()" />
     </md-input-container>
     <br />
-    <md-input-container class="example-full-width">
+    <md-input-container class="full-width">
         <input mdInput placeholder="Zakładana średnica prętów zbrojenia głównego [mm]:" [(ngModel)]="fiG" name="fiG" (keyup)="policz()"
         />
     </md-input-container>
     <br />
-    <md-input-container class="example-full-width">
+    <md-input-container class="full-width">
         <input mdInput placeholder="Otulina minimalna [mm]:" value="{{c_min() | formatNumber:5 }}" readonly />
     </md-input-container>
     <br />
-    <md-input-container class="example-full-width">
+    <md-input-container class="full-width">
         <input mdInput placeholder="Otulina nominalna [mm]:" value="{{c_nom() | formatNumber:5 }}" readonly />
     </md-input-container>
     <br />
-    <md-input-container class="example-full-width">
+    <md-input-container class="full-width">
         <input mdInput placeholder="Wysokość użytkowa płyty [cm]:" value="{{dp() | formatNumber:5 }}" readonly />
     </md-input-container>
 
