@@ -87,3 +87,9 @@ input.mat-input-element[readonly] {
 input.mat-input-element[readonly]:focus {
     color: #444;
 }
+.hidden {
+    display:none;
+}
+.ng-invalid.ng-dirty {
+    color: #a22 !important;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { BetonModelObliczen } from '../model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-geometria-stropu',
@@ -11,15 +12,14 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   @Input() rozpPlyty: number;
   @Input() rozpZebra: number;
 
+  form: FormGroup;
+
   hp_min_value: number;
   hp_max_value: number;
   hz_min_value: number;
   hz_max_value: number;
-  hp_value: number;
-  hz_value: number;
   bz_min_value: number;
   bz_max_value: number;
-  bz_value: number;
 
   @Output() onHpMin: EventEmitter<number> = new EventEmitter<number>();
   @Output() onHpMax: EventEmitter<number> = new EventEmitter<number>();
@@ -31,8 +31,34 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   @Output() onBzMax: EventEmitter<number> = new EventEmitter<number>();
   @Output() onBz: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
 
+    this.form = fb.group({
+      hp_value: new FormControl('', [
+        (control) => { return this.minMaxValidator(control, this.hp_min_value, this.hp_max_value) }
+      ]),
+      hz_value: new FormControl('', [
+        (control) => { return this.minMaxValidator(control, this.hz_min_value, this.hz_max_value) }
+      ]),
+      bz_value: new FormControl('', [
+        (control) => { return this.minMaxValidator(control, this.bz_min_value, this.bz_max_value) }
+      ]),
+    })
+
+  }
+
+  minMaxValidator(c: any, min: number, max: number) {
+    
+    if (c.value >= min && c.value <= max) {
+      return;
+    }
+    if (!min || !max) {
+      return;
+    }
+    return { wrongValue: "Wartoœæ musi byæ pomiêdzy " + min + " a " + max };
+
+  }
+  
   ngOnInit() {
     this.policzZebra();
     this.policzPlyty();
@@ -59,11 +85,11 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   }
 
   private bz_min_obl() {
-    this.bz_min_value = 1 / 2.5 * this.hz_value;
+    this.bz_min_value = 1 / 2.5 * this.form.controls['hz_value'].value;
     this.onBzMin.emit(this.bz_min_value);
   }
   private bz_max_obl() {
-    this.bz_max_value = 1 / 2 * this.hz_value;
+    this.bz_max_value = 1 / 2 * this.form.controls['hz_value'].value;
     this.onBzMax.emit(this.bz_max_value);
   }
 
@@ -86,17 +112,17 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   }
 
   hzChange() {
-    this.onHz.emit(this.hz_value);
+    this.onHz.emit(this.form.controls['hz_value'].value);
     this.bz_max_obl();
     this.bz_min_obl();
   }
 
   hpChange() {
-    this.onHp.emit(this.hp_value);
+    this.onHp.emit(this.form.controls['hp_value'].value);
   }
 
   bzChange() {
-    this.onBz.emit(this.bz_value);
+    this.onBz.emit(this.form.controls['bz_value'].value);
   }
 
 }

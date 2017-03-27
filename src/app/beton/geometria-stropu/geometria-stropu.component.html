@@ -11,30 +11,31 @@
   </md-input-container>
   <br />
   <md-input-container class="full-width">
-    <input mdInput placeholder=" Dobrana wysokość płyty [m]:" [(ngModel)]="hp_value" name="hp_value" (keyup)="hpChange()" />
+    <input mdInput placeholder=" Dobrana wysokość płyty [m]:" [formControl]="form.controls['hp_value']" name="hp_value" (keyup)="hpChange()"/>
+      <md-hint *ngIf="hp_max_value && form.controls['hp_value'].errors">{{form.controls['hp_value'].errors.wrongValue}}</md-hint>
   </md-input-container>
 
   <br />
 
   <md-input-container class="full-width">
-    <input mdInput placeholder="Minimalna wysokość żebra [m]:" value="{{hz_min_value | formatNumber}}" readonly />
+    <input mdInput placeholder="Minimalna wysokość żebra [m]:" value="{{hz_min_value  | formatNumber}}" readonly />
   </md-input-container><br />
   <md-input-container class="full-width">
-    <input mdInput placeholder="Maksymalna wysokość żebra [m]:" value="{{hz_max_value | formatNumber}}" readonly />
+    <input mdInput placeholder="Maksymalna wysokość żebra [m]:" value="{{hz_max_value  | formatNumber}}" readonly />
   </md-input-container><br />
   <md-input-container class="full-width">
-    <input mdInput placeholder="Dobrana wysokość żebra [m]:" [(ngModel)]="hz_value" name="hz_value" (keyup)="hzChange()">
+    <input mdInput placeholder="Dobrana wysokość żebra [m]:" [formControl]="form.controls['hz_value']" name="hz_value" (keyup)="hzChange()">
   </md-input-container>
   <br />
 
   <md-input-container class="full-width">
-    <input mdInput placeholder="Minimalna szerokość żebra [m]:" value="{{bz_min_value | formatNumber}}" readonly />
+    <input mdInput placeholder="Minimalna szerokość żebra [m]:" value="{{bz_min_value  | formatNumber}}" readonly />
   </md-input-container><br />
   <md-input-container class="full-width">
-    <input mdInput placeholder="Maksymalna szerokość żebra [m]:" value="{{bz_max_value | formatNumber}}" readonly />
+    <input mdInput placeholder="Maksymalna szerokość żebra [m]:" value="{{bz_max_value  | formatNumber}}" readonly />
   </md-input-container><br />
   <md-input-container class="full-width">
-    <input mdInput placeholder="Dobrana szerokość żebra [m]:" [(ngModel)]="bz_value" name="bz_value" (keyup)="bzChange()">
+    <input mdInput placeholder="Dobrana szerokość żebra [m]:" [formControl]="form.controls['bz_value']" (keyup)="bzChange()">
   </md-input-container>
   <br />
 
