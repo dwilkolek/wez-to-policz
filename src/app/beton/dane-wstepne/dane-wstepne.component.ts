@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {BetonModelObliczen} from '../model';
+import {KlasaBetonu} from '../klasa-betonu';
 
 @Component({
   selector: 'app-dane-wstepne',
@@ -13,10 +14,14 @@ export class DaneWstepneComponent implements OnInit {
   @Input() klasaB: string;
   @Input() gatunekS: string;
 
+  klasaBetonu: string;
+
   @Output() onRozpPlyty: EventEmitter<number> = new EventEmitter<number>();
   @Output() onRozpZebra: EventEmitter<number> = new EventEmitter<number>();
   @Output() onKlasaB: EventEmitter<string> = new EventEmitter<string>();
   @Output() onGatunekS: EventEmitter<string> = new EventEmitter<string>();
+
+  // klasy:any = this.listaDlaKlasBetonu();
 
   constructor() { }
 
@@ -37,5 +42,16 @@ export class DaneWstepneComponent implements OnInit {
   emitZebra() {
     this.onRozpZebra.emit(this.rozpZebra);
   }
+
+  // listaDlaKlasBetonu() {
+  //   var list = [];
+  //   var ids = Object.getOwnPropertyNames(KlasaBetonu.KLASY_BETONU);
+  //   console.log(ids);
+  //   ids.forEach(id => {
+  //     list.push({id: id, text: KlasaBetonu.KLASY_BETONU_PARAMETRY.get(id).text});
+  //   })
+
+  //   return list;
+  // }
 
 }

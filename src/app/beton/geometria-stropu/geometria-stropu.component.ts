@@ -69,24 +69,24 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
 
 
   private hp_min_obl() {
-    this.hp_min_value = 1 / 35 * this.rozpZebra;
+    this.hp_min_value = 1 / 35 * this.rozpPlyty;
     this.onHpMin.emit(this.hp_min_value);
   }
   private hp_max_obl() {
-    this.hp_max_value = 1 / 25 * this.rozpZebra;
+    this.hp_max_value = 1 / 25 * this.rozpPlyty;
     this.onHpMax.emit(this.hp_max_value);
   }
   private hz_min_obl() {
-    this.hz_min_value = 1 / 18 * this.rozpPlyty;
+    this.hz_min_value = 1 / 18 * this.rozpZebra;
     this.onHzMin.emit(this.hz_min_value);
   }
   private hz_max_obl() {
-    this.hz_max_value = 1 / 15 * this.rozpPlyty;
+    this.hz_max_value = 1 / 15 * this.rozpZebra;
     this.onHzMax.emit(this.hz_max_value);
   }
 
   hzChange() {
-    this.onHz.emit(this.hz_value);    
+    this.onHz.emit(this.hz_value);
     this.bz_max_obl();
     this.bz_min_obl();
   }

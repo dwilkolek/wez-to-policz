@@ -1,3 +1,11 @@
+import {Component} from '@angular/core';
+
+
+@Component({
+  selector: 'select-form-example',
+  templateUrl: './dane-wstepne.component.html',
+})
+
 export module KlasaBetonu {
 
     export var KLASY_BETONU = {
