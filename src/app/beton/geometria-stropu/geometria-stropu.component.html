@@ -2,40 +2,42 @@
   <h3>Geometria stropu</h3>
 </header>
 <form>
-  <md-input-container class="full-width">
+  <!--<md-input-container class="full-width">
     <input mdInput placeholder="Minimalna wysokość płyty [m]:" value="{{hp_min_value | formatNumber}}" readonly />
   </md-input-container>
   <br />
   <md-input-container class="full-width">
     <input mdInput placeholder="Maksymalna wysokość płyty [m]:" value="{{hp_max_value | formatNumber}}" readonly />
   </md-input-container>
-  <br />
+  <br />-->
   <md-input-container class="full-width">
-    <input mdInput placeholder=" Dobrana wysokość płyty [m]:" [formControl]="form.controls['hp_value']" name="hp_value" (keyup)="hpChange()"/>
-      <md-hint *ngIf="hp_max_value && form.controls['hp_value'].errors">{{form.controls['hp_value'].errors.wrongValue}}</md-hint>
+    <input mdInput placeholder=" Dobrana wysokość płyty [m]: {{getMinMaxInfo(hp_min_value,hp_max_value)}} " [formControl]="form.controls['hp_value']" name="hp_value" (keyup)="hpChange()"/>
+    <md-hint *ngIf="hp_max_value && form.controls['hp_value'].errors">{{form.controls['hp_value'].errors.wrongValue}}</md-hint>
   </md-input-container>
 
   <br />
 
-  <md-input-container class="full-width">
+  <!--<md-input-container class="full-width">
     <input mdInput placeholder="Minimalna wysokość żebra [m]:" value="{{hz_min_value  | formatNumber}}" readonly />
   </md-input-container><br />
   <md-input-container class="full-width">
     <input mdInput placeholder="Maksymalna wysokość żebra [m]:" value="{{hz_max_value  | formatNumber}}" readonly />
-  </md-input-container><br />
+  </md-input-container><br />-->
   <md-input-container class="full-width">
-    <input mdInput placeholder="Dobrana wysokość żebra [m]:" [formControl]="form.controls['hz_value']" name="hz_value" (keyup)="hzChange()">
+    <input mdInput placeholder="Dobrana wysokość żebra [m]: {{getMinMaxInfo(hz_min_value,hz_max_value)}}" [formControl]="form.controls['hz_value']" name="hz_value" (keyup)="hzChange()">
+    <md-hint *ngIf="hz_max_value && form.controls['hz_value'].errors">{{form.controls['hz_value'].errors.wrongValue}}</md-hint>
   </md-input-container>
   <br />
 
-  <md-input-container class="full-width">
+  <!--<md-input-container class="full-width">
     <input mdInput placeholder="Minimalna szerokość żebra [m]:" value="{{bz_min_value  | formatNumber}}" readonly />
   </md-input-container><br />
   <md-input-container class="full-width">
     <input mdInput placeholder="Maksymalna szerokość żebra [m]:" value="{{bz_max_value  | formatNumber}}" readonly />
-  </md-input-container><br />
+  </md-input-container><br />-->
   <md-input-container class="full-width">
-    <input mdInput placeholder="Dobrana szerokość żebra [m]:" [formControl]="form.controls['bz_value']" (keyup)="bzChange()">
+    <input mdInput placeholder="Dobrana szerokość żebra [m]: {{getMinMaxInfo(bz_min_value,bz_max_value)}}" [formControl]="form.controls['bz_value']" (keyup)="bzChange()">
+    <md-hint *ngIf="bz_max_value && form.controls['bz_value'].errors">{{form.controls['bz_value'].errors.wrongValue}}</md-hint>
   </md-input-container>
   <br />
 

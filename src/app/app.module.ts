@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
 import { BetonComponent } from './beton/beton.component';
@@ -10,7 +11,7 @@ import { AboutComponent } from './about/about.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import {NumberFormatPipe} from '../pipes/number-format-pipe';
+import { NumberFormatPipe } from '../pipes/number-format-pipe';
 import { DaneWstepneComponent } from './beton/dane-wstepne/dane-wstepne.component';
 import { GeometriaStropuComponent } from './beton/geometria-stropu/geometria-stropu.component';
 import { OtulinaMinimalnaComponent } from './beton/otulina-minimalna/otulina-minimalna.component'
@@ -34,6 +35,7 @@ export const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule

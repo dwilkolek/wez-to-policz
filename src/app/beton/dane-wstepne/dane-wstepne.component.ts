@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {BetonModelObliczen} from '../model';
 import {KlasaBetonu} from '../klasa-betonu';
+import {GatunekStali} from '../gatunek-stali';
 
 @Component({
   selector: 'app-dane-wstepne',
@@ -11,17 +12,17 @@ export class DaneWstepneComponent implements OnInit {
 
   @Input() rozpPlyty: number;
   @Input() rozpZebra: number;
-  @Input() klasaB: string;
-  @Input() gatunekS: string;
+  @Input() klasaBetonu: string;
+  @Input() gatunekStali: string;
 
-  klasaBetonu: string;
 
   @Output() onRozpPlyty: EventEmitter<number> = new EventEmitter<number>();
   @Output() onRozpZebra: EventEmitter<number> = new EventEmitter<number>();
   @Output() onKlasaB: EventEmitter<string> = new EventEmitter<string>();
   @Output() onGatunekS: EventEmitter<string> = new EventEmitter<string>();
 
-  // klasy:any = this.listaDlaKlasBetonu();
+  klasy:any = this.listaDlaKlasBetonu();
+  gatunki:any = this.listaDlaGatunkowStali();
 
   constructor() { }
 
@@ -29,11 +30,11 @@ export class DaneWstepneComponent implements OnInit {
   }
 
   emitKlasyB() {
-    this.onKlasaB.emit(this.klasaB);
+    this.onKlasaB.emit(this.klasaBetonu);
   }
 
   emitGatunkuS() {
-    this.onGatunekS.emit(this.gatunekS);
+    this.onGatunekS.emit(this.gatunekStali);
   }
 
   emitPlyty() {
@@ -43,15 +44,23 @@ export class DaneWstepneComponent implements OnInit {
     this.onRozpZebra.emit(this.rozpZebra);
   }
 
-  // listaDlaKlasBetonu() {
-  //   var list = [];
-  //   var ids = Object.getOwnPropertyNames(KlasaBetonu.KLASY_BETONU);
-  //   console.log(ids);
-  //   ids.forEach(id => {
-  //     list.push({id: id, text: KlasaBetonu.KLASY_BETONU_PARAMETRY.get(id).text});
-  //   })
+  listaDlaKlasBetonu() {
+    var list = [];
+    var ids = Object.getOwnPropertyNames(KlasaBetonu.KLASY_BETONU);
+    ids.forEach(id => {
+      list.push({id: id, text: KlasaBetonu.KLASY_BETONU_PARAMETRY.get(id).text});
+    })
 
-  //   return list;
-  // }
+    return list;
+  }
+  listaDlaGatunkowStali() {
+    var list = [];
+    var ids = Object.getOwnPropertyNames(GatunekStali.GATUNKI_STALI);
+    ids.forEach(id => {
+      list.push({id: id, text: GatunekStali.GATUNKI_STALI_PARAMETRY.get(id).text});
+    })
+
+    return list;
+  }
 
 }
