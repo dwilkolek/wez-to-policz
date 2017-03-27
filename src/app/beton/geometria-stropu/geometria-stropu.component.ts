@@ -48,17 +48,17 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   }
 
   minMaxValidator(c: any, min: number, max: number) {
-    
+
     if (c.value >= min && c.value <= max) {
       return;
     }
     if (!min || !max) {
       return;
     }
-    return { wrongValue: "Wartoœæ musi byæ pomiêdzy " + min + " a " + max };
+    return { wrongValue: "WartoÅ›Ä‡ musi byÄ‡ pomiÄ™dzy " + min + " a " + max };
 
   }
-  
+
   ngOnInit() {
     this.policzZebra();
     this.policzPlyty();
@@ -67,11 +67,11 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.rozpPlyty) {
       this.rozpPlyty = changes.rozpPlyty.currentValue;
-      this.policzZebra();
+      this.policzPlyty();
     }
     if (changes.rozpZebra) {
       this.rozpZebra = changes.rozpZebra.currentValue;
-      this.policzPlyty();
+      this.policzZebra();
     }
   }
 

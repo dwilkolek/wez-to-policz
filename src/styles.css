@@ -74,22 +74,27 @@ h1 {
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .half-width {
-    width: 50%;
+  width: 50%;
 }
-
+.mat-input-container {
+  margin: 0px 0px 10px 0px;
+}
 input.mat-input-element[readonly] {
-    color: #888;
+  color: #888;
 }
 input.mat-input-element[readonly]:focus {
-    color: #444;
+  color: #444;
 }
 .hidden {
-    display:none;
+  display:none;
 }
-.ng-invalid.ng-dirty {
-    color: #a22 !important;
+.ng-invalid.ng-dirty{
+  color: #f55 !important;
+}
+.ng-invalid.ng-dirty .mat-input-underline {
+  background: #f55 !important;
 }
