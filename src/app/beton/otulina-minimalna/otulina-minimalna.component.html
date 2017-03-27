@@ -18,15 +18,15 @@
     </md-input-container>
     <br />
     <md-input-container class="full-width">
-        <input mdInput placeholder="Otulina minimalna [mm]:" value="{{c_min()}}" readonly />
+        <input mdInput placeholder="Otulina minimalna [mm]:" value="{{c_min() | formatNumber}}" readonly />
     </md-input-container>
     <br />
     <md-input-container class="full-width">
-        <input mdInput placeholder="Otulina nominalna [mm]:" value="{{c_nom()}}" readonly />
+        <input mdInput placeholder="Otulina nominalna [mm]:" value="{{c_nom() | formatNumber}}" readonly />
     </md-input-container>
     <br />
     <md-input-container class="full-width">
-        <input mdInput placeholder="Wysokość użytkowa płyty [cm]:" value="{{dp()}}" readonly />
+        <input mdInput placeholder="Wysokość użytkowa płyty [cm]:" value="{{dp() | formatNumber}}" readonly />
     </md-input-container>
 
 </form>

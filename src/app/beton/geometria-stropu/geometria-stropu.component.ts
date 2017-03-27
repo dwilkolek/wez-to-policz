@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { NumberFormatPipe } from '../../../pipes/number-format-pipe';
 
 @Component({
   selector: 'app-geometria-stropu',
@@ -8,6 +9,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./geometria-stropu.component.css']
 })
 export class GeometriaStropuComponent implements OnInit, OnChanges {
+
+  numberFormatter: NumberFormatPipe = new NumberFormatPipe();
 
   @Input() rozpPlyty: number;
   @Input() rozpZebra: number;
@@ -49,16 +52,21 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
 
   minMaxValidator(c: any, min: number, max: number) {
 
+
+
     if (c.value >= min && c.value <= max) {
       return;
     }
     if (!min || !max) {
       return;
     }
-    return { wrongValue: "Wartość musi być pomiędzy " + min + " a " + max };
+    return { wrongValue: "Wartość musi być od " + this.numberFormatter.transform(min, 2) + " do " + this.numberFormatter.transform(max, 2) };
 
   }
 
+  getMinMaxInfo(min, max) {
+    return min && max ? '<' + this.numberFormatter.transform(min, 2) + ', ' + this.numberFormatter.transform(max, 2) + '>' : '';
+  }
   ngOnInit() {
     this.policzZebra();
     this.policzPlyty();

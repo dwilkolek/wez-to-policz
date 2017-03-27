@@ -3,31 +3,13 @@
 </header>
 <br />
 
-Klasa betonu
-<!--<md-select placeholder="Klasa betonu" [(ngModel)]="klasaBetonu" name = "klasaBetonu">
-   <md-option *ngFor="let klasa of klasy" [value]="klasa.id">{{ klasa.text }}</md-option>
-</md-select>-->
-
-<select required name="klasaBetonu">
-  <option value="C12/15">C12/15</option>
-  <option value="C16/20">C16/20</option>
-  <option value="C20/25">C20/25</option>
-  <option value="C25/30">C25/30</option>
-  <option value="C30/37">C30/37</option>
-  <option value="C35/45">C25/30</option>
-  <option value="C40/50">C40/50</option>
-  <option value="C45/55">C45/55</option>
-  <option value="C50/60">C50/60</option>
-</select>
-
-Gatunek stali
-<select required name="gatunekStali">
-  <option value="RB400">RB400</option>
-  <option value="RB500">RB500</option>
-</select>
-<br /><br />
-
 <form>
+  <md-select placeholder="Klasa betonu" [(ngModel)]="klasaBetonu" name="klasaBetonu" class="half-width">
+    <md-option *ngFor="let klasa of klasy" [value]="klasa.id">{{ klasa.text }}</md-option>
+  </md-select>
+  <md-select placeholder="Gatunek stali" [(ngModel)]="gatunekStali" name="gatunekStali" class="half-width">
+    <md-option *ngFor="let gatunek of gatunki" [value]="gatunek.id">{{ gatunek.text }}</md-option>
+  </md-select>
   <md-input-container class="full-width">
     <input mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()" />
   </md-input-container>
@@ -35,4 +17,5 @@ Gatunek stali
   <md-input-container class="full-width">
     <input mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()" />
   </md-input-container>
+
 </form>

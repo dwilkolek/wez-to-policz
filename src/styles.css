@@ -78,10 +78,12 @@ h1 {
 }
 
 .half-width {
-  width: 50%;
+  width: calc(50% - 5px);
+  float: left;
+  margin-right: 5px;
 }
-.mat-input-container {
-  margin: 0px 0px 10px 0px;
+.mat-input-container, .mat-select {
+  margin-bottom: 10px;
 }
 input.mat-input-element[readonly] {
   color: #888;
