@@ -24,5 +24,10 @@ export class BetonModelObliczen {
   hp_max: number;
   c_min: number;
   dp: number;
+  stale_char: number;
+  zmienne_char: number;
+  stale_obl: number;
+  zmienne_obl: number;
+  l_eff: number;
 
 }

@@ -13,7 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {NumberFormatPipe} from '../pipes/number-format-pipe';
 import { DaneWstepneComponent } from './beton/dane-wstepne/dane-wstepne.component';
 import { GeometriaStropuComponent } from './beton/geometria-stropu/geometria-stropu.component';
-import { OtulinaMinimalnaComponent } from './beton/otulina-minimalna/otulina-minimalna.component'
+import { OtulinaMinimalnaComponent } from './beton/otulina-minimalna/otulina-minimalna.component';
 
 export const appRoutes: Routes = [
   { path: '', component: AboutComponent },
