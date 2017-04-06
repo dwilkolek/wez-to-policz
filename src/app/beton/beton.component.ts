@@ -9,7 +9,7 @@ import { BetonModelObliczen } from './model';
   styleUrls: ['./beton.component.css']
 })
 export class BetonComponent implements OnInit {
- 
+
   model:BetonModelObliczen = new BetonModelObliczen();
 
   ngOnInit() {

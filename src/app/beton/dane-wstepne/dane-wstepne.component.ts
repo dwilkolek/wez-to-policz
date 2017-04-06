@@ -18,8 +18,8 @@ export class DaneWstepneComponent implements OnInit {
 
   @Output() onRozpPlyty: EventEmitter<number> = new EventEmitter<number>();
   @Output() onRozpZebra: EventEmitter<number> = new EventEmitter<number>();
-  @Output() onKlasaB: EventEmitter<string> = new EventEmitter<string>();
-  @Output() onGatunekS: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onKlasaB: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onGatunekS: EventEmitter<number> = new EventEmitter<number>();
 
   klasy:any = this.listaDlaKlasBetonu();
   gatunki:any = this.listaDlaGatunkowStali();
@@ -27,14 +27,6 @@ export class DaneWstepneComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
-  emitKlasyB() {
-    this.onKlasaB.emit(this.klasaBetonu);
-  }
-
-  emitGatunkuS() {
-    this.onGatunekS.emit(this.gatunekStali);
   }
 
   emitPlyty() {
@@ -61,6 +53,13 @@ export class DaneWstepneComponent implements OnInit {
     })
 
     return list;
+  }
+  emitfck() {
+    this.onKlasaB.emit(KlasaBetonu.KLASY_BETONU_PARAMETRY.get(this.klasaBetonu).fck);
+  }
+
+  emitfyk() {
+    this.onGatunekS.emit(GatunekStali.GATUNKI_STALI_PARAMETRY.get(this.gatunekStali).fyk);
   }
 
 }
