@@ -33,8 +33,7 @@ export const appRoutes: Routes = [
     DaneWstepneComponent,
     GeometriaStropuComponent,
     OtulinaMinimalnaComponent,
-    ObwiednieComponent
-    OtulinaMinimalnaComponent,
+    ObwiednieComponent,
     MomentyZginajaceComponent
   ],
   imports: [

@@ -24,30 +24,37 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
   lineYMarg = 10;
   svgContainer;
   ngOnInit() {
-    this.svgContainer = this.d3.select(this.parentNativeElement).append("svg")
-      .attr("width", this.lineStartX + this.lineEndX)
-      .attr("height", this.lineY * 2);
-    this.draw();
+    this.ngOnChanges(null);
   }
-  ngOnChanges() {
-    if (this.svgContainer) {
-      this.clear();
-      if (this.validate()) {
-        this.draw();
-      }
+  ngOnChanges(x) {
+    console.log(this.daneGorne, x);
+    this.clear();
+    if (this.validate()) {
+      this.draw();
     }
-  }
-  validate() {
-    return Array.isArray(this.daneGorne) && Array.isArray(this.daneDolne);
-  }
-  clear() {
-    this.svgContainer.remove()
-    this.svgContainer = this.d3.select(this.parentNativeElement).append("svg")
-      .attr("width", this.lineStartX + this.lineEndX)
-      .attr("height", this.lineY * 2);
 
   }
+  validate() {
+    var arr: boolean = Array.isArray(this.daneGorne) && Array.isArray(this.daneDolne);
+    var gora = (this.daneGorne.length - 3) % 2 == 0 && this.daneGorne.filter((e)=> {return e ? true : false;}).length >= 5;
+    var dol = (this.daneDolne.length - 3) % 2 == 0 && this.daneDolne.filter((e)=> {return e ? true : false;}).length >= 5;
+
+
+
+    return arr && gora && dol;
+  }
+  clear() {
+    if (this.svgContainer) {
+      this.svgContainer.remove()
+    }
+  }
   draw() {
+
+
+
+    this.svgContainer = this.d3.select(this.parentNativeElement).append("svg")
+      .attr("width", this.lineStartX + this.lineEndX)
+      .attr("height", this.lineY * 2);
     let d3 = this.d3; // <-- for convenience use a block scope variable
     let d3ParentElement: Selection<any, any, any, any>; // <-- Use the Selection interface (very basic here for illustration only)
 
