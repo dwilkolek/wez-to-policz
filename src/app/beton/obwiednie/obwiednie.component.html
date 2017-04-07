@@ -4,14 +4,14 @@
 <form>
     <md-input-container class="full-width">
         <input mdInput placeholder="Wartość obliczeniowa obciążeń stałych [kN/m]:" [(ngModel)]="stale" name="stale"
-            (keyup)="liczMomenty()" />
+            (keyup)="liczMomenty()" (keyup)="liczSily()"/>
     </md-input-container>
 
     <br />
 
     <md-input-container class="full-width">
         <input mdInput placeholder="Wartość obliczeniowa obciążeń zmiennych [kN/m]:" [(ngModel)]="zmienne" name="zmienne"
-            (keyup)="liczMomenty()"/>
+            (keyup)="liczMomenty()" (keyup)="liczSily()"/>
     </md-input-container>
 
     <!--<br />

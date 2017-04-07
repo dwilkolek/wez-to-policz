@@ -14,7 +14,12 @@
 <app-obwiednie [l_eff]="model.l_eff" (onMMaxPrzeslo1)="przypiszDoModelu('mMaxPrzeslo1', $event)" (onMMaxPodporaB)="przypiszDoModelu('mMaxPodporaB', $event)"
     (onMMaxPrzeslo2)="przypiszDoModelu('mMaxPrzeslo2', $event)" (onMMaxPodporaC)="przypiszDoModelu('mMaxPodporaC', $event)" (onMMaxPrzeslo3)="przypiszDoModelu('mMaxPrzeslo3', $event)"
     (onMMinPrzeslo1)="przypiszDoModelu('mMinPrzeslo1', $event)" (onMMinPodporaB)="przypiszDoModelu('mMinPodporaB', $event)" (onMMinPrzeslo2)="przypiszDoModelu('mMinPrzeslo2', $event)"
-    (onMMinPodporaC)="przypiszDoModelu('mMinPodporaC', $event)" (onMMinPrzeslo3)="przypiszDoModelu('mMinPrzeslo3', $event)">
+    (onMMinPodporaC)="przypiszDoModelu('mMinPodporaC', $event)" (onMMinPrzeslo3)="przypiszDoModelu('mMinPrzeslo3', $event)" (onSMaxPodporaA)="przypiszDoModelu('sMaxPodporaA', $event)"
+    (onSMaxPodporaBL)="przypiszDoModelu('sMaxPodporaBL', $event)" (onSMaxPodporaBP)="przypiszDoModelu('sMaxPodporaBP', $event)"
+    (onSMaxPodporaCL)="przypiszDoModelu('sMaxPodporaCL', $event)" (onSMaxPodporaCP)="przypiszDoModelu('sMaxPodporaCP', $event)"
+    (onSMinPodporaA)="przypiszDoModelu('sMinPodporaA', $event)" (onSMinPodporaBL)="przypiszDoModelu('sMinPodporaBL', $event)"
+    (onSMinPodporaBP)="przypiszDoModelu('sMinPodporaBP', $event)" (onSMinPodporaCL)="przypiszDoModelu('sMinPodporaCL', $event)"
+    (onSMinPodporaCP)="przypiszDoModelu('sMinPodporaCP', $event)">
 </app-obwiednie>
 
 <p>Wytrzymałość charakterystyczna na ściskanie betonu wynosi {{model.fck}} MPa</p>

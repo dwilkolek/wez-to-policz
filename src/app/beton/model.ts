@@ -42,4 +42,16 @@ export class BetonModelObliczen {
   mMinPodporaC: number;
   mMinPrzeslo3: number;
 
+  sMaxPodporaA: number;
+  sMaxPodporaBL: number;
+  sMaxPodporaBP: number;
+  sMaxPodporaCL: number;
+  sMaxPodporaCP: number;
+
+  sMinPodporaA: number;
+  sMinPodporaBL: number;
+  sMinPodporaBP: number;
+  sMinPodporaCL: number;
+  sMinPodporaCP: number;
+
 }
