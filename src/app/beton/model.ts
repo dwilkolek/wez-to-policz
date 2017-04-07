@@ -30,4 +30,16 @@ export class BetonModelObliczen {
   fck: number;
   fyk: number;
 
+  mMaxPrzeslo1: number;
+  mMaxPodporaB: number;
+  mMaxPrzeslo2: number;
+  mMaxPodporaC: number;
+  mMaxPrzeslo3: number;
+
+  mMinPrzeslo1: number;
+  mMinPodporaB: number;
+  mMinPrzeslo2: number;
+  mMinPodporaC: number;
+  mMinPrzeslo3: number;
+
 }

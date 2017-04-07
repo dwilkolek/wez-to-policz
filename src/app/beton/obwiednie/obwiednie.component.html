@@ -1,3 +1,37 @@
-<p>
-  obwiednie works!
-</p>
+<header>
+    <h3>Obwiednie momentów i sił tnących</h3>
+</header>
+<form>
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Wartość obliczeniowa obciążeń stałych [kN/m]:" [(ngModel)]="stale" name="stale"
+            (keyup)="liczMomenty()" />
+    </md-input-container>
+
+    <br />
+
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Wartość obliczeniowa obciążeń zmiennych [kN/m]:" [(ngModel)]="zmienne" name="zmienne"
+            (keyup)="liczMomenty()"/>
+    </md-input-container>
+
+    <!--<br />
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Zakładana średnica prętów zbrojenia głównego [mm]:" [(ngModel)]="fiG" name="fiG" (keyup)="policz()"
+        />
+    </md-input-container>
+    <br />
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Otulina minimalna [mm]:" value="{{c_min() | formatNumber}}" readonly />
+    </md-input-container>
+    <br />
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Otulina nominalna [mm]:" value="{{c_nom() | formatNumber}}" readonly />
+    </md-input-container>
+    <br />
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Wysokość użytkowa płyty [cm]:" value="{{dp() | formatNumber}}" readonly />
+    </md-input-container>
+    <md-input-container class="full-width">
+        <input mdInput placeholder="Długość efektywna przęsła [m]:" value="{{l_eff() | formatNumber}}" readonly />
+    </md-input-container>-->
+</form>
