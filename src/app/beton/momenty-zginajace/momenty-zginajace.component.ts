@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, ElementRef, Input } from '@angular/core';
 import { D3Service, D3, Selection } from 'd3-ng2-service';
+import { NumberFormatPipe } from '../../../pipes/number-format-pipe';
 
 @Component({
   selector: 'app-momenty-zginajace',
@@ -10,6 +11,8 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
 
   @Input() daneGorne: number[];
   @Input() daneDolne: number[];
+
+  format = new NumberFormatPipe();
 
   private d3: D3; // <-- Define the private member which will hold the d3 reference
   private parentNativeElement: any;
@@ -38,9 +41,6 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
     var arr: boolean = Array.isArray(this.daneGorne) && Array.isArray(this.daneDolne);
     var gora = (this.daneGorne.length - 3) % 2 == 0 && this.daneGorne.filter((e)=> {return e ? true : false;}).length >= 5;
     var dol = (this.daneDolne.length - 3) % 2 == 0 && this.daneDolne.filter((e)=> {return e ? true : false;}).length >= 5;
-
-
-
     return arr && gora && dol;
   }
   clear() {
@@ -49,12 +49,10 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
     }
   }
   draw() {
-
-
-
     this.svgContainer = this.d3.select(this.parentNativeElement).append("svg")
       .attr("width", this.lineStartX + this.lineEndX)
-      .attr("height", this.lineY * 2);
+      .attr("height", this.lineY * 2)
+      .classed("center", true);
     let d3 = this.d3; // <-- for convenience use a block scope variable
     let d3ParentElement: Selection<any, any, any, any>; // <-- Use the Selection interface (very basic here for illustration only)
 
@@ -154,7 +152,7 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
       .attr("dy", (index % 2 == 0) ? "-4px" : "12px")
       .attr("dx", (this.yFn()(0) == y) ? "-0.25em" : "-1.5em")
       .style("font-size", "10px")
-      .text(text);
+      .text(this.format.transform(parseFloat(text),3));
   }
 
   yFn() {

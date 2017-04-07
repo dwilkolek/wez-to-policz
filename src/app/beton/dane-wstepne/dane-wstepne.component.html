@@ -4,18 +4,33 @@
 <br />
 
 <form>
-  <md-select placeholder="Klasa betonu" [(ngModel)]="klasaBetonu" name="klasaBetonu" class="half-width" (change)="emitfck()">
-    <md-option *ngFor="let klasa of klasy" [value]="klasa.id">{{ klasa.text }}</md-option>
-  </md-select>
-  <md-select placeholder="Gatunek stali" [(ngModel)]="gatunekStali" name="gatunekStali" class="half-width" (change)="emitfyk()">
-    <md-option *ngFor="let gatunek of gatunki" [value]="gatunek.id">{{ gatunek.text }}</md-option>
-  </md-select>
-  <md-input-container class="full-width">
-    <input mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()" />
-  </md-input-container>
-  <br />
-  <md-input-container class="full-width">
-    <input mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()" />
-  </md-input-container>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <br />
+      <md-select placeholder="Klasa betonu" [(ngModel)]="klasaBetonu" name="klasaBetonu" class="full-width" (change)="emitfck()">
+        <md-option *ngFor="let klasa of klasy" [value]="klasa.id">{{ klasa.text }}</md-option>
+      </md-select>
+      <br />
+    </div>
+    <div class="col-md-6 col-sm-12">
+<br />
+      <md-select placeholder="Gatunek stali" [(ngModel)]="gatunekStali" name="gatunekStali" class="full-width" (change)="emitfyk()">
+        <md-option *ngFor="let gatunek of gatunki" [value]="gatunek.id">{{ gatunek.text }}</md-option>
+      </md-select>
+      <br />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <md-input-container class="full-width">
+        <input mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()" />
+      </md-input-container>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <md-input-container class="full-width">
+        <input mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()" />
+      </md-input-container>
+    </div>
+  </div>
 
 </form>

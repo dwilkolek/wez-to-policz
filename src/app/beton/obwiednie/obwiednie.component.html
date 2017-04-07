@@ -2,17 +2,22 @@
     <h3>Obwiednie momentów i sił tnących</h3>
 </header>
 <form>
-    <md-input-container class="full-width">
-        <input mdInput placeholder="Wartość obliczeniowa obciążeń stałych [kN/m]:" [(ngModel)]="stale" name="stale"
-            (keyup)="liczMomenty()" (keyup)="liczSily()"/>
-    </md-input-container>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <md-input-container class="full-width">
+                <input mdInput placeholder="Wartość obliczeniowa obciążeń stałych [kN/m]:" [(ngModel)]="stale" name="stale" (keyup)="liczMomenty()"
+                    (keyup)="liczSily()" />
+            </md-input-container>
 
-    <br />
+        </div>
+        <div class="col-md-6 col-sm-12">
 
-    <md-input-container class="full-width">
-        <input mdInput placeholder="Wartość obliczeniowa obciążeń zmiennych [kN/m]:" [(ngModel)]="zmienne" name="zmienne"
-            (keyup)="liczMomenty()" (keyup)="liczSily()"/>
-    </md-input-container>
+            <md-input-container class="full-width">
+                <input mdInput placeholder="Wartość obliczeniowa obciążeń zmiennych [kN/m]:" [(ngModel)]="zmienne" name="zmienne" (keyup)="liczMomenty()"
+                    (keyup)="liczSily()" />
+            </md-input-container>
+        </div>
+    </div>
 
     <!--<br />
     <md-input-container class="full-width">

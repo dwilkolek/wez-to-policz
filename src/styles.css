@@ -100,3 +100,8 @@ input.mat-input-element[readonly]:focus {
 .ng-invalid.ng-dirty .mat-input-underline {
   background: #f55 !important;
 }
+
+svg.center {
+  margin: 0px auto;
+  display: block;
+}
