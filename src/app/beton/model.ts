@@ -2,8 +2,6 @@ import { KlasaBetonu } from './klasa-betonu';
 import { GatunekStali } from './gatunek-stali';
 
 export class BetonModelObliczen {
-  paramBet: number = 1.4;
-  paramStal: number = 1.15;
   rozpPlyty: number;
   rozpZebra: number;
   zmienneD: number;
@@ -27,8 +25,6 @@ export class BetonModelObliczen {
   stale: number;
   zmienne: number;
   l_eff: number;
-  fck: number;
-  fyk: number;
 
   mMaxPrzeslo1: number;
   mMaxPodporaB: number;
@@ -53,5 +49,13 @@ export class BetonModelObliczen {
   sMinPodporaBP: number;
   sMinPodporaCL: number;
   sMinPodporaCP: number;
+
+  paramBet: number = 1.4;
+  paramStal: number = 1.15;
+  fck: number;
+  fyk: number;
+  fctm: number;
+  zbrojenieMin: number;
+  zbrojenieMax: number;
 
 }

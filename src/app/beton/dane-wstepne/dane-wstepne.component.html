@@ -7,13 +7,14 @@
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <br />
-      <md-select placeholder="Klasa betonu" [(ngModel)]="klasaBetonu" name="klasaBetonu" class="full-width" (change)="emitfck()">
+      <md-select placeholder="Klasa betonu" [(ngModel)]="klasaBetonu" name="klasaBetonu" class="full-width" (change)="emitfck()"
+        (change)="emitfctm()">
         <md-option *ngFor="let klasa of klasy" [value]="klasa.id">{{ klasa.text }}</md-option>
       </md-select>
       <br />
     </div>
     <div class="col-md-6 col-sm-12">
-<br />
+      <br />
       <md-select placeholder="Gatunek stali" [(ngModel)]="gatunekStali" name="gatunekStali" class="full-width" (change)="emitfyk()">
         <md-option *ngFor="let gatunek of gatunki" [value]="gatunek.id">{{ gatunek.text }}</md-option>
       </md-select>

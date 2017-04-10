@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {BetonModelObliczen} from '../model';
-import {KlasaBetonu} from '../klasa-betonu';
-import {GatunekStali} from '../gatunek-stali';
+import { BetonModelObliczen } from '../model';
+import { KlasaBetonu } from '../klasa-betonu';
+import { GatunekStali } from '../gatunek-stali';
 
 @Component({
   selector: 'app-dane-wstepne',
@@ -19,10 +19,11 @@ export class DaneWstepneComponent implements OnInit {
   @Output() onRozpPlyty: EventEmitter<number> = new EventEmitter<number>();
   @Output() onRozpZebra: EventEmitter<number> = new EventEmitter<number>();
   @Output() onKlasaB: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onFctm: EventEmitter<number> = new EventEmitter<number>();
   @Output() onGatunekS: EventEmitter<number> = new EventEmitter<number>();
 
-  klasy:any = this.listaDlaKlasBetonu();
-  gatunki:any = this.listaDlaGatunkowStali();
+  klasy: any = this.listaDlaKlasBetonu();
+  gatunki: any = this.listaDlaGatunkowStali();
 
   constructor() { }
 
@@ -40,22 +41,27 @@ export class DaneWstepneComponent implements OnInit {
     var list = [];
     var ids = Object.getOwnPropertyNames(KlasaBetonu.KLASY_BETONU);
     ids.forEach(id => {
-      list.push({id: id, text: KlasaBetonu.KLASY_BETONU_PARAMETRY.get(id).text});
+      list.push({ id: id, text: KlasaBetonu.KLASY_BETONU_PARAMETRY.get(id).text });
     })
 
     return list;
   }
+
   listaDlaGatunkowStali() {
     var list = [];
     var ids = Object.getOwnPropertyNames(GatunekStali.GATUNKI_STALI);
     ids.forEach(id => {
-      list.push({id: id, text: GatunekStali.GATUNKI_STALI_PARAMETRY.get(id).text});
+      list.push({ id: id, text: GatunekStali.GATUNKI_STALI_PARAMETRY.get(id).text });
     })
 
     return list;
   }
   emitfck() {
     this.onKlasaB.emit(KlasaBetonu.KLASY_BETONU_PARAMETRY.get(this.klasaBetonu).fck);
+  }
+
+  emitfctm() {
+    this.onFctm.emit(KlasaBetonu.KLASY_BETONU_PARAMETRY.get(this.klasaBetonu).fctm);
   }
 
   emitfyk() {

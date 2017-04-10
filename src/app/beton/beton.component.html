@@ -1,5 +1,5 @@
 <app-dane-wstepne (onRozpPlyty)="przypiszDoModelu('rozpPlyty', $event)" (onRozpZebra)="przypiszDoModelu('rozpZebra', $event)"
-    (onKlasaB)="przypiszDoModelu('fck', $event)" (onGatunekS)="przypiszDoModelu('fyk', $event)">
+    (onKlasaB)="przypiszDoModelu('fck', $event)" (onFctm)="przypiszDoModelu('fctm', $event)" (onGatunekS)="przypiszDoModelu('fyk', $event)">
 </app-dane-wstepne>
 
 <app-geometria-stropu [rozpPlyty]="model.rozpPlyty" [rozpZebra]="model.rozpZebra" (onHz)="przypiszDoModelu('hz',$event)"
@@ -25,3 +25,6 @@
 <app-momenty-zginajace [daneGorne]="[model.mMaxPrzeslo1, model.mMaxPodporaB, model.mMaxPrzeslo2, model.mMaxPodporaC, model.mMaxPrzeslo3]"
     [daneDolne]="[model.mMinPrzeslo1, model.mMinPodporaB, model.mMinPrzeslo2, model.mMinPodporaC, model.mMinPrzeslo3]">
 </app-momenty-zginajace>
+
+<app-zbrojenie (onZborjenieMin)="przypiszDoModelu('zbrojenieMin', $event)" (onZbrojenieMax)="przypiszDoModelu('zbrojenieMax', $event)">
+</app-zbrojenie>

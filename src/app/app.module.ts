@@ -18,6 +18,7 @@ import { OtulinaMinimalnaComponent } from './beton/otulina-minimalna/otulina-min
 import { MomentyZginajaceComponent } from './beton/momenty-zginajace/momenty-zginajace.component';
 import { D3Service } from 'd3-ng2-service';
 import { ObwiednieComponent } from './beton/obwiednie/obwiednie.component';
+import { ZbrojenieComponent } from './beton/zbrojenie/zbrojenie.component';
 
 export const appRoutes: Routes = [
   { path: '', component: AboutComponent },
@@ -34,7 +35,8 @@ export const appRoutes: Routes = [
     GeometriaStropuComponent,
     OtulinaMinimalnaComponent,
     ObwiednieComponent,
-    MomentyZginajaceComponent
+    MomentyZginajaceComponent,
+    ZbrojenieComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
