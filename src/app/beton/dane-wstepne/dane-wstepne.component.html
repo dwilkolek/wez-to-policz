@@ -1,7 +1,6 @@
 <header>
   <h3>Dane wstępne</h3>
 </header>
-<br />
 
 <form>
   <div class="row">
@@ -13,7 +12,7 @@
       <br />
     </div>
     <div class="col-md-6 col-sm-12">
-<br />
+      <br />
       <md-select placeholder="Gatunek stali" [(ngModel)]="gatunekStali" name="gatunekStali" class="full-width" (change)="emitfyk()">
         <md-option *ngFor="let gatunek of gatunki" [value]="gatunek.id">{{ gatunek.text }}</md-option>
       </md-select>

@@ -22,6 +22,9 @@
     (onSMinPodporaCP)="przypiszDoModelu('sMinPodporaCP', $event)">
 </app-obwiednie>
 
-<app-momenty-zginajace [daneGorne]="[model.mMaxPrzeslo1, model.mMaxPodporaB, model.mMaxPrzeslo2, model.mMaxPodporaC, model.mMaxPrzeslo3]"
+<app-wykres-momenty-zginajace [daneGorne]="[model.mMaxPrzeslo1, model.mMaxPodporaB, model.mMaxPrzeslo2, model.mMaxPodporaC, model.mMaxPrzeslo3]"
     [daneDolne]="[model.mMinPrzeslo1, model.mMinPodporaB, model.mMinPrzeslo2, model.mMinPodporaC, model.mMinPrzeslo3]">
-</app-momenty-zginajace>
+</app-wykres-momenty-zginajace>
+
+<app-wykres-sily-tnace [dane]="[25.646, -19.333, 31.863, -13.143, 31.863, -15.627, 30.622, -15.334, 36.072, -11.424]"></app-wykres-sily-tnace>
+
