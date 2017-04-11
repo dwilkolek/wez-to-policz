@@ -22,9 +22,14 @@
     (onSMinPodporaCP)="przypiszDoModelu('sMinPodporaCP', $event)">
 </app-obwiednie>
 
-<app-momenty-zginajace [daneGorne]="[model.mMaxPrzeslo1, model.mMaxPodporaB, model.mMaxPrzeslo2, model.mMaxPodporaC, model.mMaxPrzeslo3]"
+<app-wykres-momenty-zginajace [daneGorne]="[model.mMaxPrzeslo1, model.mMaxPodporaB, model.mMaxPrzeslo2, model.mMaxPodporaC, model.mMaxPrzeslo3]"
     [daneDolne]="[model.mMinPrzeslo1, model.mMinPodporaB, model.mMinPrzeslo2, model.mMinPodporaC, model.mMinPrzeslo3]">
-</app-momenty-zginajace>
+</app-wykres-momenty-zginajace>
 
-<app-zbrojenie (onZborjenieMin)="przypiszDoModelu('zbrojenieMin', $event)" (onZbrojenieMax)="przypiszDoModelu('zbrojenieMax', $event)">
+<app-wykres-sily-tnace [dane]="[model.sMaxPodporaA, model.sMaxPodporaBL, model.sMaxPodporaBP, model.sMaxPodporaCL, model.sMaxPodporaCP,
+ -model.sMinPodporaCP, -model.sMinPodporaCL, -model.sMinPodporaBP, -model.sMinPodporaBL, -model.sMinPodporaA]">
+</app-wykres-sily-tnace>
+
+<app-zbrojenie [dp]="model.dp" [fctm]="model.fctm" [fyk]="model.fyk" (onZbrojenieMin)="przypiszDoModelu('zbrojenieMin', $event)"
+    (onZbrojenieMax)="przypiszDoModelu('zbrojenieMax', $event)">
 </app-zbrojenie>

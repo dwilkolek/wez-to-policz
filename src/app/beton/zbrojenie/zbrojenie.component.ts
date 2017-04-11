@@ -6,12 +6,12 @@ import { BetonModelObliczen } from '../model';
   templateUrl: './zbrojenie.component.html',
   styleUrls: ['./zbrojenie.component.css']
 })
-export class ZbrojenieComponent implements OnInit {
+export class ZbrojenieComponent implements OnInit, OnChanges {
 
   @Input() dp: number;
   @Input() fctm: number;
   @Input() fyk: number;
-  @Input() paramStal: number = 1.15;
+  paramStal: number = 1.15;
 
   @Input() mMaxPrzeslo1: number;
   @Input() mMaxPodporaB: number;
@@ -31,19 +31,29 @@ export class ZbrojenieComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.ngOnChanges();
   }
 
-  zbrojenieMinMax() {
-    this.onZbrojenieMin.emit(this.zbrojenieMin());
-    this.onZbrojenieMax.emit(this.zbrojenieMax());
+  ngOnChanges() {
+    this.zbrojenieMin();
+    this.zbrojenieMax();
+    this.zbrojenieMinMax();
   }
 
+  zbrojenieMinMax(
+
+  ) {
+    this.onZbrojenieMin.emit(this._zbrojenieMin);
+    this.onZbrojenieMax.emit(this._zbrojenieMax);
+  }
+  _zbrojenieMin;
   zbrojenieMin() {
-    return Math.max(0.0013 * 1 * this.dp, 0.26 * 1 * this.dp * this.fctm * this.paramStal / this.fyk);
+    console.log(Math.max(0.0013 * 100 * this.dp, 0.26 * 100 * this.dp * this.fctm * this.paramStal / this.fyk), '<<', 0.0013 * 100 * this.dp, 0.26 * 100 * this.dp * this.fctm * this.paramStal / this.fyk)
+    this._zbrojenieMin = Math.max(0.0013 * 100 * this.dp, 0.26 * 100 * this.dp * this.fctm * this.paramStal / this.fyk);
   }
-
+  _zbrojenieMax;
   zbrojenieMax() {
-    return 0.04 * 1 * this.dp;
+    this._zbrojenieMax = 0.04 * 100 * this.dp;
   }
 
 }

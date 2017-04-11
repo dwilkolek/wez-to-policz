@@ -3,14 +3,15 @@ import { D3Service, D3, Selection } from 'd3-ng2-service';
 import { NumberFormatPipe } from '../../../pipes/number-format-pipe';
 
 @Component({
-  selector: 'app-momenty-zginajace',
-  templateUrl: './momenty-zginajace.component.html',
-  styleUrls: ['./momenty-zginajace.component.css']
+  selector: 'app-wykres-sily-tnace',
+  templateUrl: './wykres-sily-tnace.component.html',
+  styleUrls: ['./wykres-sily-tnace.component.css']
 })
-export class MomentyZginajaceComponent implements OnInit, OnChanges {
+export class WykresSilyTnaceComponent implements OnInit, OnChanges {
 
-  @Input() daneGorne: number[];
-  @Input() daneDolne: number[];
+  @Input() dane: number[];
+  daneGorne: number[];
+  daneDolne: number[];
 
   format = new NumberFormatPipe();
 
@@ -21,27 +22,36 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
     this.d3 = d3Service.getD3(); // <-- obtain the d3 object from the D3 Service
     this.parentNativeElement = element.nativeElement;
   }
-  lineStartX = 20;
-  lineEndX = 820;
+  lineStartX = 50;
+  lineEndX = 800;
   lineY = 120;
   lineYMarg = 10;
   svgContainer;
   ngOnInit() {
+    this.prepareData();
     this.ngOnChanges(null);
   }
+
   ngOnChanges(x) {
-    console.log(this.daneGorne, x);
+    this.prepareData();
     this.clear();
     if (this.validate()) {
       this.draw();
     }
 
   }
+
+  prepareData() {
+    this.daneGorne = [0].concat(<number[]>JSON.parse(JSON.stringify(this.dane))).concat([0]);
+    this.daneDolne = [0].concat(<number[]>JSON.parse(JSON.stringify(this.dane))).map(value => {
+      return -1 * value;
+    }).concat([0]);
+    this.daneDolne.reverse();
+
+    console.log(this.daneGorne, this.daneDolne);
+  }
   validate() {
-    var arr: boolean = Array.isArray(this.daneGorne) && Array.isArray(this.daneDolne);
-    var gora = (this.daneGorne.length - 3) % 2 == 0 && this.daneGorne.filter((e)=> {return e ? true : false;}).length >= 5;
-    var dol = (this.daneDolne.length - 3) % 2 == 0 && this.daneDolne.filter((e)=> {return e ? true : false;}).length >= 5;
-    return arr && gora && dol;
+   return Array.isArray(this.dane) && this.dane.filter((e)=> {return e ? true : false;}).length == 10;
   }
   clear() {
     if (this.svgContainer) {
@@ -50,7 +60,7 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
   }
   draw() {
     this.svgContainer = this.d3.select(this.parentNativeElement).append("svg")
-      .attr("width", this.lineStartX + this.lineEndX)
+      .attr("width", this.lineStartX + this.lineEndX+50)
       .attr("height", this.lineY * 2)
       .classed("center", true);
     let d3 = this.d3; // <-- for convenience use a block scope variable
@@ -73,12 +83,12 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
         this.svgContainer.append("polygon")
           .attr("points", (d) => { return this.trojkatPunkty(i) })
           .attr("fill", "none")
-          .attr("stroke", "blue");
+          .attr("stroke", "black");
         this.svgContainer.append("text")
           .attr("x", this.lineStartX - 5 + i * (this.lineEndX - this.lineStartX) / 5)
           .attr("y", yFn(0) + 40)
           // .attr("dy", (index % 2 == 0) ? "-4px" : "12px")
-          // .attr("dx", (this.yFn()(0) == y) ? "-0.25em" : "-1.5em")
+          .attr("dx", "-1.5em")
           .style("font-size", "14px")
           .text(function () {
             switch (i) {
@@ -95,8 +105,8 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
           });
       }
 
-      this.wykres(this.svgContainer, this.daneGorne);
-      this.wykres(this.svgContainer, this.daneDolne);
+      this.wykres(this.svgContainer, this.daneGorne, "blue");
+      this.wykres(this.svgContainer, this.daneDolne, "green");
 
       // Do more D3 things
 
@@ -107,7 +117,7 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
   trojkatPunkty(index: number): any {
     var yFn = this.yFn();
     let basicYOffset = yFn(0);
-    let basicXOffset = 20;
+    let basicXOffset = this.lineStartX;
     let Xdiff = 10;
     let YDiff = 20;
     let indexOffset = index * (this.lineEndX - this.lineStartX) / 5;
@@ -119,20 +129,25 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
   }
 
 
-  wykres(svgContainer, dane) {
+  wykres(svgContainer, dane, color) {
     let d3 = this.d3;
-    let startT: number[] = JSON.parse(JSON.stringify(dane));
-    let endT: number[] = JSON.parse(JSON.stringify(dane));
-    endT.splice(endT.length - 1, 1);
-    endT.reverse();
-    let daneGorneSet = [0].concat(startT).concat(endT).concat([0]);
+
+
     var yFn = this.yFn();
-    var xFn = this.xFn(daneGorneSet);
-    for (let i = 0; i < this.ilPar(daneGorneSet); i++) {
-      this.luk(i, daneGorneSet, svgContainer, yFn, xFn);
-    }
-    for (let i = 0; i < daneGorneSet.length; i++) {
-      this.addText(i, svgContainer, xFn(i), yFn(daneGorneSet[i]), daneGorneSet[i].toString());
+    var xFn = this.xFn(dane);
+
+
+
+    let localIndex = 0;
+    let daneDlaLini = (<number[]>JSON.parse(JSON.stringify(dane))).map((value, index) => {
+      localIndex += (index % 2 == 0 && index > 1 ? 1 : 0);
+      return [localIndex, value];
+    })
+
+    this.linia(daneDlaLini, svgContainer, yFn, xFn, color);
+
+    for (let i = 0; i < daneDlaLini.length; i++) {
+      this.addText(i, svgContainer, xFn(daneDlaLini[i][0]), yFn(daneDlaLini[i][1]), daneDlaLini[i][1].toString());
     }
   }
 
@@ -149,19 +164,19 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
       .append("text")
       .attr("x", x)
       .attr("y", y)
-      .attr("dy", (index % 2 == 0) ? "-4px" : "12px")
-      .attr("dx", (this.yFn()(0) == y) ? "-0.25em" : "-1.5em")
+      // .attr("dy", (index % 2 == 0) ? "-4px" : "12px")
+      // .attr("dx", (this.yFn()(0) == y) ? "-0.25em" : "-1.5em")
       .style("font-size", "10px")
-      .text(this.format.transform(parseFloat(text),3));
+      .text(this.format.transform(parseFloat(text), 3));
   }
 
   yFn() {
     let d3 = this.d3;
-    return d3.scaleLinear().domain([this.min(this.allData()) - 20, this.max(this.allData()) + 20]).range([this.lineYMarg, this.lineY * 2 - 2 * this.lineYMarg]);
+    return d3.scaleLinear().domain([this.max(this.allData()), this.min(this.allData())]).range([this.lineYMarg, this.lineY * 2 - 2 * this.lineYMarg]);
   }
   xFn(daneGorneSet) {
     let d3 = this.d3;
-    return d3.scaleLinear().domain([0, daneGorneSet.length - 1]).range([this.lineStartX, this.lineEndX]);
+    return d3.scaleLinear().domain([0, daneGorneSet.length / 2 - 1]).range([this.lineStartX, this.lineEndX]);
   }
   allData() {
     return [0].concat(this.daneGorne).concat(this.daneDolne);
@@ -172,23 +187,21 @@ export class MomentyZginajaceComponent implements OnInit, OnChanges {
   startIndex(parIndex: number): number {
     return parIndex * 2;
   }
-  luk(index: number, dane: number[], svgContainer, yFn, xFn) {
+
+  linia(dane: number[][], svgContainer, yFn, xFn, color) {
     let d3 = this.d3;
+
 
     var line = d3.line()
       .x(function (d) { return xFn(d[0]); })
       .y(function (d) { return yFn(d[1]); })
-      .curve(d3.curveCatmullRom);
-    let yn = this.getTrioSet(this.startIndex(index), dane);
-    let data = [];
-    for (let j = 0; j < yn.length; j++) {
-      data.push([this.startIndex(index) + j, yn[j]]);
-    }
+      .curve(d3.curveLinear);
+
     svgContainer.append("path")
-      .datum(data)
+      .datum(dane)
       .attr("class", "line")
       .attr("d", line)
-      .attr("stroke", "red")
+      .attr("stroke", color)
       .attr("fill", "none");
 
 

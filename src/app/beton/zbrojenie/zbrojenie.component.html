@@ -1,3 +1,21 @@
-<p>
-  zbrojenie works!
-</p>
+<header>
+  <h3>Pole przekroju zbrojenia</h3>
+</header>
+<form>
+
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <md-input-container class="full-width">
+        <input type="number" mdInput placeholder="Minimalne pole przekroju zbrojenia" [value]="_zbrojenieMin | formatNumber: 3" readonly/>
+      </md-input-container>
+
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <md-input-container class="full-width">
+        <input type="number" mdInput placeholder="Maksymalne pole przekroju zbrojenia" [value]="_zbrojenieMax | formatNumber: 3" readonly/>
+      </md-input-container>
+
+    </div>
+
+  </div>
+</form>

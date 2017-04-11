@@ -15,7 +15,8 @@ import { NumberFormatPipe } from '../pipes/number-format-pipe';
 import { DaneWstepneComponent } from './beton/dane-wstepne/dane-wstepne.component';
 import { GeometriaStropuComponent } from './beton/geometria-stropu/geometria-stropu.component';
 import { OtulinaMinimalnaComponent } from './beton/otulina-minimalna/otulina-minimalna.component';
-import { MomentyZginajaceComponent } from './beton/momenty-zginajace/momenty-zginajace.component';
+import { WykresMomentyZginajaceComponent } from './beton/wykres-momenty-zginajace/wykres-momenty-zginajace.component';
+import { WykresSilyTnaceComponent } from './beton/wykres-sily-tnace/wykres-sily-tnace.component';
 import { D3Service } from 'd3-ng2-service';
 import { ObwiednieComponent } from './beton/obwiednie/obwiednie.component';
 import { ZbrojenieComponent } from './beton/zbrojenie/zbrojenie.component';
@@ -35,8 +36,10 @@ export const appRoutes: Routes = [
     GeometriaStropuComponent,
     OtulinaMinimalnaComponent,
     ObwiednieComponent,
-    MomentyZginajaceComponent,
-    ZbrojenieComponent
+
+    ZbrojenieComponent,
+    WykresMomentyZginajaceComponent,
+    WykresSilyTnaceComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -1,7 +1,6 @@
 <header>
   <h3>Dane wstępne</h3>
 </header>
-<br />
 
 <form>
   <div class="row">
@@ -24,12 +23,12 @@
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <md-input-container class="full-width">
-        <input mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()" />
+        <input type="number" mdInput placeholder="Rozpiętość płyty [m]:" [(ngModel)]="rozpPlyty" name="rozpPlyty" (keyup)="emitPlyty()" />
       </md-input-container>
     </div>
     <div class="col-md-6 col-sm-12">
       <md-input-container class="full-width">
-        <input mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()" />
+        <input type="number" mdInput placeholder="Rozpiętość żebra [m]:" [(ngModel)]="rozpZebra" name="rozpZebra" (keyup)="emitZebra()" />
       </md-input-container>
     </div>
   </div>
