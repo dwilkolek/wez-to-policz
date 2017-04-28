@@ -11,7 +11,15 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
   @Input() dp: number;
   @Input() fctm: number;
   @Input() fyk: number;
+  @Input() fck: number;
   paramStal: number = 1.15;
+  paramBet: number = 1.4;
+  ksiLimes: number = 0.493;
+  eta: number = 1;
+  mi: number;
+  ksiEff: number;
+  zc: number;
+  b: number = 1;
 
   @Input() mMaxPrzeslo1: number;
   @Input() mMaxPodporaB: number;
@@ -27,6 +35,7 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
 
   @Output() onZbrojenieMin: EventEmitter<number> = new EventEmitter<number>();
   @Output() onZbrojenieMax: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojenieDolne1: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -38,6 +47,8 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
     this.zbrojenieMin();
     this.zbrojenieMax();
     this.zbrojenieMinMax();
+    this.zbrojenieDolne1();
+    this.zbrojenieTeoretyczne();
   }
 
   zbrojenieMinMax(
@@ -46,14 +57,31 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
     this.onZbrojenieMin.emit(this._zbrojenieMin);
     this.onZbrojenieMax.emit(this._zbrojenieMax);
   }
+
+  zbrojenieTeoretyczne() {
+    this.onZbrojenieDolne1.emit(this._zbrojenieDolne1);
+  }
+
   _zbrojenieMin;
   zbrojenieMin() {
-    console.log(Math.max(0.0013 * 100 * this.dp, 0.26 * 100 * this.dp * this.fctm * this.paramStal / this.fyk), '<<', 0.0013 * 100 * this.dp, 0.26 * 100 * this.dp * this.fctm * this.paramStal / this.fyk)
     this._zbrojenieMin = Math.max(0.0013 * 100 * this.dp, 0.26 * 100 * this.dp * this.fctm * this.paramStal / this.fyk);
   }
+
   _zbrojenieMax;
   zbrojenieMax() {
     this._zbrojenieMax = 0.04 * 100 * this.dp;
+  }
+
+  liczZc(MEd: number) {
+    this.mi = MEd / (this.b * this.dp * this.dp * this.eta * (this.fck / this.paramBet));
+    this.ksiEff = 1 - Math.sqrt(1 - 2 * this.mi);
+    return this.zc = (1 - 0.5 * this.ksiEff) * this.dp;
+  }
+
+  _zbrojenieDolne1: number;
+  zbrojenieDolne1() {
+    this.liczZc(this.mMaxPrzeslo1);
+    return this._zbrojenieDolne1 = 1000 * this.mMaxPrzeslo1 / (this.zc * this.fyk / this.paramStal);
   }
 
 }

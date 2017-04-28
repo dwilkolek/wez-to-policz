@@ -60,12 +60,12 @@ export class GeometriaStropuComponent implements OnInit, OnChanges {
     if (!min || !max) {
       return;
     }
-    return { wrongValue: "Wartość musi być od " + this.numberFormatter.transform(min, 2) + " do " + this.numberFormatter.transform(max, 2) };
+    return { wrongValue: "Wartość musi być od " + this.numberFormatter.transform(min, 3) + " do " + this.numberFormatter.transform(max, 3) };
 
   }
 
   getMinMaxInfo(min, max) {
-    return min && max ? '<' + this.numberFormatter.transform(min, 2) + ', ' + this.numberFormatter.transform(max, 2) + '>' : '';
+    return min && max ? '<' + this.numberFormatter.transform(min, 3) + ', ' + this.numberFormatter.transform(max, 3) + '>' : '';
   }
   ngOnInit() {
     this.policzZebra();

@@ -57,5 +57,9 @@ export class BetonModelObliczen {
   fctm: number;
   zbrojenieMin: number;
   zbrojenieMax: number;
+  ksiLimes: number = 0.493;
+  eta: number = 1;
+
+  zbrojenieDolne1: number;
 
 }

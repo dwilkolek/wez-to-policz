@@ -30,6 +30,9 @@
  -model.sMinPodporaCP, -model.sMinPodporaCL, -model.sMinPodporaBP, -model.sMinPodporaBL, -model.sMinPodporaA]">
 </app-wykres-sily-tnace>
 
-<app-zbrojenie [dp]="model.dp" [fctm]="model.fctm" [fyk]="model.fyk" (onZbrojenieMin)="przypiszDoModelu('zbrojenieMin', $event)"
-    (onZbrojenieMax)="przypiszDoModelu('zbrojenieMax', $event)">
+<app-zbrojenie [dp]="model.dp" [fctm]="model.fctm" [fyk]="model.fyk" [fck]="model.fck" [mMaxPrzeslo1]="model.mMaxPrzeslo1"
+    [mMaxPodporaB]="model.mMaxPodporaB" [mMaxPrzeslo2]="model.mMaxPrzeslo2" [mMaxPodporaC]="model.mMaxPodporaC" [mMaxPrzeslo3]="model.mMaxPrzeslo3"
+    [mMinPrzeslo1]="model.mMinPrzeslo1" [mMinPodporaB]="model.mMinPodporaB" [mMinPrzeslo2]="model.mMinPrzeslo2" [mMinPodporaC]="model.mMinPodporaC"
+    [mMinPrzeslo3]="model.mMinPrzeslo3" (onZbrojenieMin)="przypiszDoModelu('zbrojenieMin', $event)" (onZbrojenieMax)="przypiszDoModelu('zbrojenieMax', $event)"
+    (onZbrojenieDolne1)="przypiszDoModelu('zbrojenieDolne1', $event)">
 </app-zbrojenie>
