@@ -61,5 +61,12 @@ export class BetonModelObliczen {
   eta: number = 1;
 
   zbrojenieDolne1: number;
+  zbrojenieDolne2: number;
+  zbrojenieGorne2: number;
+  zbrojenieDolne3: number;
+  zbrojenieGorne3: number;
+  zbrojeniePodporaA: number;
+  zbrojeniePodporaB: number;
+  zbrojeniePodporaC: number;
 
 }

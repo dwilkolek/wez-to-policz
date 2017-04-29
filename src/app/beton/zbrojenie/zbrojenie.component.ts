@@ -36,6 +36,13 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
   @Output() onZbrojenieMin: EventEmitter<number> = new EventEmitter<number>();
   @Output() onZbrojenieMax: EventEmitter<number> = new EventEmitter<number>();
   @Output() onZbrojenieDolne1: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojenieDolne2: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojenieGorne2: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojenieDolne3: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojenieGorne3: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojeniePodporaA: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojeniePodporaB: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onZbrojeniePodporaC: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -48,6 +55,13 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
     this.zbrojenieMax();
     this.zbrojenieMinMax();
     this.zbrojenieDolne1();
+    this.zbrojenieDolne2();
+    this.zbrojenieGorne2();
+    this.zbrojenieDolne3();
+    this.zbrojenieGorne3();
+    this.zbrojeniePodporaA();
+    this.zbrojeniePodporaB();
+    this.zbrojeniePodporaC();
     this.zbrojenieTeoretyczne();
   }
 
@@ -60,6 +74,13 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
 
   zbrojenieTeoretyczne() {
     this.onZbrojenieDolne1.emit(this._zbrojenieDolne1);
+    this.onZbrojenieDolne2.emit(this._zbrojenieDolne2);
+    this.onZbrojenieGorne2.emit(this._zbrojenieGorne2);
+    this.onZbrojenieDolne3.emit(this._zbrojenieDolne3);
+    this.onZbrojenieGorne3.emit(this._zbrojenieGorne3);
+    this.onZbrojeniePodporaA.emit(this._zbrojeniePodporaA);
+    this.onZbrojeniePodporaB.emit(this._zbrojeniePodporaB);
+    this.onZbrojeniePodporaC.emit(this._zbrojeniePodporaC);
   }
 
   _zbrojenieMin;
@@ -73,15 +94,57 @@ export class ZbrojenieComponent implements OnInit, OnChanges {
   }
 
   liczZc(MEd: number) {
-    this.mi = MEd / (this.b * this.dp * this.dp * this.eta * (this.fck / this.paramBet));
+    this.mi = MEd / (this.b * this.dp / 100 * this.dp / 100 * this.eta * (this.fck * 1000000 / this.paramBet));
     this.ksiEff = 1 - Math.sqrt(1 - 2 * this.mi);
-    return this.zc = (1 - 0.5 * this.ksiEff) * this.dp;
+    return this.zc = (1 - 0.5 * this.ksiEff) * this.dp / 100;
   }
 
   _zbrojenieDolne1: number;
   zbrojenieDolne1() {
-    this.liczZc(this.mMaxPrzeslo1);
-    return this._zbrojenieDolne1 = 1000 * this.mMaxPrzeslo1 / (this.zc * this.fyk / this.paramStal);
+    this.liczZc(1000 * this.mMaxPrzeslo1);
+    return this._zbrojenieDolne1 = 10000 * this.mMaxPrzeslo1 * 1000 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojenieDolne2: number;
+  zbrojenieDolne2() {
+    this.liczZc(1000 * this.mMaxPrzeslo2);
+    return this._zbrojenieDolne2 = 10000 * this.mMaxPrzeslo2 * 1000 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojenieGorne2: number;
+  zbrojenieGorne2() {
+    this.liczZc((Math.abs(1000 * this.mMinPodporaB) + Math.abs(1000 * this.mMinPrzeslo2)) / 3);
+    return this._zbrojenieGorne2 = 10000 * (Math.abs(1000 * this.mMinPodporaB) + Math.abs(1000 * this.mMinPrzeslo2)) / 3 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojenieDolne3: number;
+  zbrojenieDolne3() {
+    this.liczZc(1000 * this.mMaxPrzeslo3);
+    return this._zbrojenieDolne3 = 10000 * this.mMaxPrzeslo3 * 1000 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojenieGorne3: number;
+  zbrojenieGorne3() {
+    this.liczZc((Math.abs(1000 * this.mMinPodporaC) + Math.abs(1000 * this.mMinPrzeslo3)) / 3);
+    return this._zbrojenieGorne3 = 10000 * (Math.abs(1000 * this.mMinPodporaC) + Math.abs(1000 * this.mMinPrzeslo3)) / 3 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojeniePodporaA: number;
+  zbrojeniePodporaA() {
+    this.liczZc(0.25 * 1000 * this.mMaxPrzeslo1);
+    return this._zbrojeniePodporaA = 10000 * 0.25 * this.mMaxPrzeslo1 * 1000 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojeniePodporaB: number;
+  zbrojeniePodporaB() {
+    this.liczZc(Math.abs(1000 * this.mMinPodporaB));
+    return this._zbrojeniePodporaB = 10000 * Math.abs(this.mMinPodporaB) * 1000 / (this.zc * this.fyk * 1000000 / this.paramStal);
+  }
+
+  _zbrojeniePodporaC: number;
+  zbrojeniePodporaC() {
+    this.liczZc(Math.abs(1000 * this.mMinPodporaC));
+    return this._zbrojeniePodporaC = 10000 * Math.abs(this.mMinPodporaC) * 1000 / (this.zc * this.fyk * 1000000 / this.paramStal);
   }
 
 }
